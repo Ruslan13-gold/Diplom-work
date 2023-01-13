@@ -1,0 +1,13 @@
+{% extends 'dip/base.html' %}
+
+
+{% block post %}
+{% for p in posts %}
+<button class="collapsible">{{p}}</button>
+<div class="content">
+    <p><a href="{{ p.get_absolute_url }}" class="a_in_content">{{p}}</a></p>
+    <hr>
+    <p><a href="#" class="a_in_content">Выполнить лабораторную работу</a></p>
+</div>
+{% endfor %}
+{% endblock %}
