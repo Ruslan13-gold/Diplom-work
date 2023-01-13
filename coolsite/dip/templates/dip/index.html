@@ -1,13 +1,42 @@
-{% extends 'dip/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="{% static 'dip/css/styles.css' %}" rel="stylesheet">
 
+    <title>{{ title }}</title>
+</head>
+<body>
 
-{% block post %}
-{% for p in posts %}
-<button class="collapsible">{{p}}</button>
-<div class="content">
-    <p><a href="{{ p.get_absolute_url }}" class="a_in_content">{{p}}</a></p>
-    <hr>
-    <p><a href="#" class="a_in_content">Выполнить лабораторную работу</a></p>
-</div>
-{% endfor %}
+<div class="right_post_lecture">
+
+    <div class="group_lecture_button">
+
+        {% block post %}
+
+        <div class="title_lecture">
+            <h1>КУРС</h1>
+        </div>
+        {% for p in posts %}
+        <button class="collapsible">{{p}}</button>
+
+        <div class="content">
+            <p><a href="{{ p.get_absolute_url }}" class="a_in_content">{{p}}</a></p>
+            <hr>
+            <p><a href="#" class="a_in_content">Выполнить лабораторную работу</a></p>
+        </div>
+
+        {% endfor %}
+        {% endblock %}
+    </div>
+
+{% block content %}
 {% endblock %}
+</div>
+
+<script src="{% static 'dip/js/screepts.js' %}"></script>
+</body>
+</html>
+
+

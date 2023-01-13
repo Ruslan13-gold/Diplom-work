@@ -21,9 +21,10 @@ def pageNotFound(request, exception):
 
 def show_lecture(request, lecture_id):
     lecture = get_object_or_404(Lecture, pk=lecture_id)
+    posts = Lecture.objects.all()
 
     context = {
-
+        'posts': posts,
         'lecture': lecture,
         # 'menu': menu,
         'title': lecture.title,

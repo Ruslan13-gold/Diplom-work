@@ -5,8 +5,13 @@ body{
 }
 
 .title_lecture{
+
     width: 300px;
     margin: 0;
+}
+
+.title_lecture h1{
+    margin: 10px 20px;
 }
 
 .collapsible {
@@ -15,7 +20,7 @@ body{
   cursor: pointer;
   padding: 16px;
   margin: 0px;
-  width: 300px;
+  width: 350px;
   border: none;
   text-align: left;
   outline: none;
@@ -42,7 +47,7 @@ body{
 
 .content {
   max-height: 0;
-  width: 300px;
+  width: 350px;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
@@ -58,7 +63,23 @@ body{
     color: black;
 }
 
-.a_in_content:hover {
+.a_in_content:hover{
     color: red;
+}
+
+.group_lecture_button{
+    display: block;
+}
+
+.right_post_lecture{
+    display: flex;
+}
+
+iframe{
+    position: absolute;
+    right: 0;
+    width: 1100px;
+    height: 735px;
+    margin: 0 18px;
 }
 

@@ -1,19 +1,7 @@
-{% extends 'dip/base.html' %}
-
-{% block post %}
-{% for p in posts %}
-<button class="collapsible">{{p}}</button>
-<div class="content">
-    <p><a href="{{ p.get_absolute_url }}" class="a_in_content">{{p}}</a></p>
-    <hr>
-    <p><a href="#" class="a_in_content">Выполнить лабораторную работу</a></p>
-</div>
-{% endfor %}
-{% endblock %}
+{% extends 'dip/index.html' %}
 
 {% block content %}
-<h1>{{lecture.title}}</h1>
-
-<iframe src="{{lecture.content.url}}" width="700" height="500"></iframe>
+<!--<h1>{{lecture.title}}</h1>-->
+    <iframe src="{{lecture.content.url}}" ></iframe>
 
 {% endblock %}
