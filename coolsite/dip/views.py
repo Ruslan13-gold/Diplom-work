@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 
+from .forms import *
 from .models import *
 
 menu = ['О сайте', 'Добавить статью', 'Войти']
@@ -27,6 +28,7 @@ def show_lecture(request, lecture_id):
         'posts': posts,
         'lecture': lecture,
         'title': lecture.title,
+
     }
 
     return render(request, 'dip/post_lecture.html', context=context)
@@ -36,19 +38,18 @@ def show_laboratory(request, laboratory_id):
     laboratory = get_object_or_404(Lecture, pk=laboratory_id)
     posts = Lecture.objects.all()
 
+    if request.method == 'POST':
+        form = PostFormAddFunctionAndSection(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = PostFormAddFunctionAndSection()
+
     context = {
         'posts': posts,
         'laboratory': laboratory,
+        'form': form,
     }
 
     return render(request, 'dip/post_laboratory.html', context=context)
 
-# def show_category(request):
-#     category = Lecture.objects.all()
-#
-#     context = {
-#         'category': category,
-#         'title': 'Лекции',
-#     }
-#
-#     return render(request, 'dip/index.html', context=context)

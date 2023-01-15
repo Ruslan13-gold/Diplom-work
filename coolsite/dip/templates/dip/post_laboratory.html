@@ -4,21 +4,28 @@
 <!--<h1>{{lecture.title}}</h1>-->
     <div class="iframe_content">
         <iframe id="iframe_laboratory" src="{{laboratory.content_laboratory.url}}" ></iframe>
-        <div class="menu_block_laboratory">
-            <div class="content_in_menu_block_laboratory">
-                <div class="content_in_menu_block_laboratory_input_function">
-                    <label for="input_function" class="custom_label_input">Введите уравнение: </label>
-                    <input id="input_function" class="custom_input" size="17" placeholder="2*x^n"/>
-                </div>
-                <div class="content_in_menu_block_laboratory_input_section">
-                    <label for="input_section" class="custom_label_input">Введите отрезок: </label>
-                    <input id="input_section" class="custom_input" size="20" placeholder="[-1.5;2]"/>
-                </div>
-                <div class="content_in_menu_block_laboratory_button_next">
-                    <button class="button_click_program">Продолжить</button>
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <div class="menu_block_laboratory">
+                <div class="content_in_menu_block_laboratory">
+
+                    <div class="content_in_menu_block_laboratory_input_function">
+                        <p><label for="{{ form.function.id_for_function }}" class="custom_label_input">{{form.function.label}}</label>{{form.function}}</p>
+                        <div>{{form.function.errors}}</div>
+                    </div>
+
+                    <div class="content_in_menu_block_laboratory_input_section">
+                        <p><label for="{{ form.function.id_for_label }}" class="custom_label_input">{{form.section.label}}</label>{{form.section}}</p>
+                        <div>{{form.section.errors}}</div>
+                    </div>
+
+                    <div class="content_in_menu_block_laboratory_button_next">
+                        <button type="submit" class="button_click_program">Продолжить</button>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 {% endblock %}
