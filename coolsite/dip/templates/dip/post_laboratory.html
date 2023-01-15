@@ -1,0 +1,26 @@
+{% extends 'dip/index.html' %}
+
+{% block content %}
+<!--<h1>{{lecture.title}}</h1>-->
+    <div class="iframe_content">
+        <iframe id="iframe_laboratory" src="{{laboratory.content_laboratory.url}}" ></iframe>
+        <div class="menu_block_laboratory">
+            <div class="content_in_menu_block_laboratory">
+                <div class="content_in_menu_block_laboratory_input_function">
+                    <label for="input_function" class="custom_label_input">Введите уравнение: </label>
+                    <input id="input_function" class="custom_input" size="17" placeholder="2*x^n"/>
+                </div>
+                <div class="content_in_menu_block_laboratory_input_section">
+                    <label for="input_section" class="custom_label_input">Введите отрезок: </label>
+                    <input id="input_section" class="custom_input" size="20" placeholder="[-1.5;2]"/>
+                </div>
+                <div class="content_in_menu_block_laboratory_button_next">
+                    <button class="button_click_program">Продолжить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

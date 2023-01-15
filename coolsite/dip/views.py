@@ -26,11 +26,22 @@ def show_lecture(request, lecture_id):
     context = {
         'posts': posts,
         'lecture': lecture,
-        # 'menu': menu,
         'title': lecture.title,
     }
 
-    return render(request, 'dip/post.html', context=context)
+    return render(request, 'dip/post_lecture.html', context=context)
+
+
+def show_laboratory(request, laboratory_id):
+    laboratory = get_object_or_404(Lecture, pk=laboratory_id)
+    posts = Lecture.objects.all()
+
+    context = {
+        'posts': posts,
+        'laboratory': laboratory,
+    }
+
+    return render(request, 'dip/post_laboratory.html', context=context)
 
 # def show_category(request):
 #     category = Lecture.objects.all()

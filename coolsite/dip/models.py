@@ -4,7 +4,8 @@ from django.urls import reverse
 
 class Lecture(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
-    content = models.FileField(upload_to='uploads_Lecture/%Y/%m/%d/', verbose_name="Файл")
+    content_lecture = models.FileField(upload_to='uploads_Lecture/%Y/%m/%d/', verbose_name="Файлы лекций")
+    content_laboratory = models.FileField(upload_to='uploads_Laboratory/%Y/%m/%d/', null=True, verbose_name="Файлы лабораторных работ")
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
     is_published = models.BooleanField(default=True, verbose_name="Опубликован\\Неопубликован")
@@ -12,8 +13,11 @@ class Lecture(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
+    def get_absolute_url_lecture(self):
         return reverse('lecture', kwargs={'lecture_id': self.pk})
+
+    def get_absolute_url_laboratory(self):
+        return reverse('laboratory', kwargs={'laboratory_id': self.pk})
 
     class Meta:
         verbose_name = "Лекции"
