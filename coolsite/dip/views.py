@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import *
 from .models import *
@@ -28,7 +28,6 @@ def show_lecture(request, lecture_id):
         'posts': posts,
         'lecture': lecture,
         'title': lecture.title,
-
     }
 
     return render(request, 'dip/post_lecture.html', context=context)
@@ -41,7 +40,9 @@ def show_laboratory(request, laboratory_id):
     if request.method == 'POST':
         form = PostFormAddFunctionAndSection(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            return redirect('home')
+        else:
+            return redirect('laboratory')
     else:
         form = PostFormAddFunctionAndSection()
 
@@ -53,3 +54,21 @@ def show_laboratory(request, laboratory_id):
 
     return render(request, 'dip/post_laboratory.html', context=context)
 
+# def show_page_parameters_and_inaccuracy(request):
+#     posts = Lecture.objects.all()
+#
+#     if request.method == 'POST':
+#         form = FormParametersAndInaccuracy(request.POST)
+#         if form.is_valid():
+#             return redirect('inaccuracy_and_parameters')
+#         else:
+#             return redirect('laboratory')
+#     else:
+#         form = FormParametersAndInaccuracy()
+#
+#     context = {
+#         'posts': posts,
+#         'form': form,
+#     }
+#
+#     return render(request, 'dip/parameters_and_inaccuracy.html', context=context)
