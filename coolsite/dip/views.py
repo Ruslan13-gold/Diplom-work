@@ -40,7 +40,7 @@ def show_laboratory(request, laboratory_id):
     if request.method == 'POST':
         form = PostFormAddFunctionAndSection(request.POST)
         if form.is_valid():
-            return redirect('compiler')
+            return redirect('home')
         else:
             return redirect('laboratory')
     else:
@@ -55,14 +55,14 @@ def show_laboratory(request, laboratory_id):
     return render(request, 'dip/post_laboratory.html', context=context)
 
 
-def compiler(request):
-    posts = Lecture.objects.all()
-
-    context = {
-        'posts': posts,
-    }
-
-    return render(request, 'dip/compiler.html', context=context)
+# def compiler(request):
+#     posts = Lecture.objects.all()
+#
+#     context = {
+#         'posts': posts,
+#     }
+#
+#     return render(request, 'dip/compiler.html', context=context)
 
 # def show_page_parameters_and_inaccuracy(request):
 #     posts = Lecture.objects.all()
