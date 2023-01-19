@@ -64,9 +64,9 @@ def show_laboratory(request, laboratory_id):
 #
 #     return render(request, 'dip/compiler.html', context=context)
 
-# def show_page_parameters_and_inaccuracy(request):
+# def show_page_parameters_and_inaccuracy(request, laboratory_id):
 #     posts = Lecture.objects.all()
-#
+#     laboratory = get_object_or_404(Lecture, pk=laboratory_id)
 #     if request.method == 'POST':
 #         form = FormParametersAndInaccuracy(request.POST)
 #         if form.is_valid():

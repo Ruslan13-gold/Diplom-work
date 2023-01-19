@@ -4,7 +4,7 @@
 <!--<h1>{{lecture.title}}</h1>-->
     <div class="iframe_content">
         <iframe id="iframe_laboratory" src="{{laboratory.content_laboratory.url}}" ></iframe>
-        <form method="post">
+        <form method="get">
             {% csrf_token %}
             <div class="menu_block_laboratory">
                 <div class="content_in_menu_block_laboratory">
@@ -12,7 +12,7 @@
                     <h3>Индивидуальное задание</h3>
                     <div class="content_method_in_border">
                         <div class="content_in_menu_block_laboratory_input_function">
-                            <p><label for="{{ form.function.id_for_function }}" class="custom_label_input">{{form.function.label}}</label>{{form.function}}</p>
+                            <p><label for="{{ form.function.id_for_label }}" class="custom_label_input">{{form.function.label}}</label>{{form.function}}</p>
                             <div>{{form.function.errors}}</div>
                         </div>
 
@@ -24,20 +24,20 @@
 
                     <h3>Параметры метода</h3>
                     <div class="content_method_in_border">
-                        <p><label for="{{ form.par_small.id_for_par_small }}" class="custom_label_input">{{form.par_small.label}}</label>{{form.par_small}}</p>
+                        <p><label for="{{ form.par_small.id_for_label }}" class="custom_label_input">{{form.par_small.label}}</label>{{form.par_small}}</p>
                         <div>{{form.par_small.errors}}</div>
 
-                        <p><label for="{{ form.par_step.id_for_par_step }}" class="custom_label_input">{{form.par_step.label}}</label>{{form.par_step}}</p>
+                        <p><label for="{{ form.par_step.id_for_label }}" class="custom_label_input">{{form.par_step.label}}</label>{{form.par_step}}</p>
                         <div>{{form.par_step.errors}}</div>
                     </div>
 
 
                     <h3>Погрешности метода</h3>
                     <div class="content_method_in_border">
-                        <p><label for="{{ form.pogr_eps.id_for_pogr_eps }}" class="custom_label_input">{{form.pogr_eps.label}}</label>{{form.pogr_eps}}</p>
+                        <p><label for="{{ form.pogr_eps.id_for_label }}" class="custom_label_input">{{form.pogr_eps.label}}</label>{{form.pogr_eps}}</p>
                         <div>{{form.pogr_eps.errors}}</div>
 
-                        <p><label for="{{ form.pogr_delta.id_for_pogr_delta }}" class="custom_label_input">{{form.pogr_delta.label}}</label>{{form.pogr_delta}}</p>
+                        <p><label for="{{ form.pogr_delta.id_for_label }}" class="custom_label_input">{{form.pogr_delta.label}}</label>{{form.pogr_delta}}</p>
                         <div>{{form.pogr_delta.errors}}</div>
                     </div>
 
