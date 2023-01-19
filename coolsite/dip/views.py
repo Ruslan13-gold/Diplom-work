@@ -20,8 +20,8 @@ def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
-def show_lecture(request, lecture_id):
-    lecture = get_object_or_404(Lecture, pk=lecture_id)
+def show_lecture(request, lecture_slug):
+    lecture = get_object_or_404(Lecture, slug=lecture_slug)
     posts = Lecture.objects.all()
 
     context = {
@@ -33,18 +33,18 @@ def show_lecture(request, lecture_id):
     return render(request, 'dip/post_lecture.html', context=context)
 
 
-def show_laboratory(request, laboratory_id):
-    laboratory = get_object_or_404(Lecture, pk=laboratory_id)
+def show_laboratory(request, laboratory_slug):
+    laboratory = get_object_or_404(Lecture, slug=laboratory_slug)
     posts = Lecture.objects.all()
-
-    if request.method == 'POST':
-        form = PostFormAddFunctionAndSection(request.POST)
-        if form.is_valid():
-            return redirect('home')
-        else:
-            return redirect('laboratory')
-    else:
-        form = PostFormAddFunctionAndSection()
+    form = PostFormAddFunctionAndSection()
+    # if request.method == 'POST':
+    #     form = PostFormAddFunctionAndSection(request.POST)
+    #     if form.is_valid():
+    #         return redirect('home')
+    #     else:
+    #         return redirect('laboratory')
+    # else:
+    #     form = PostFormAddFunctionAndSection()
 
     context = {
         'posts': posts,
@@ -53,6 +53,19 @@ def show_laboratory(request, laboratory_id):
     }
 
     return render(request, 'dip/post_laboratory.html', context=context)
+
+
+def laboratory_result(request):
+    function = request.GET['function']
+
+    return render(request, 'dip/laboratory_result.html', {'result_function': function})
+
+
+
+
+
+
+
 
 
 # def compiler(request):
