@@ -1,11 +1,28 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, FormView, DetailView
+from django.views import View
+
 
 from .forms import *
 from .models import *
 
 menu = ['О сайте', 'Добавить статью', 'Войти']
 
+
+# class MainPage(ListView):
+#     model = Lecture
+#     template_name = "dip/index.html"
+#     context_object_name = 'posts'
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Главная страница'
+#         return context
+#
+#     def get_queryset(self):
+#         return Lecture.objects.filter(is_published=True)
 
 def index(request):
     posts = Lecture.objects.all()
@@ -21,8 +38,8 @@ def pageNotFound(request, exception):
 
 
 def show_lecture(request, lecture_slug):
-    lecture = get_object_or_404(Lecture, slug=lecture_slug)
     posts = Lecture.objects.all()
+    lecture = get_object_or_404(Lecture, slug=lecture_slug)
 
     context = {
         'posts': posts,
@@ -36,7 +53,7 @@ def show_lecture(request, lecture_slug):
 def show_laboratory(request, laboratory_slug):
     laboratory = get_object_or_404(Lecture, slug=laboratory_slug)
     posts = Lecture.objects.all()
-    form = PostFormAddFunctionAndSection()
+    form = PostFormLaboratory()
     # if request.method == 'POST':
     #     form = PostFormAddFunctionAndSection(request.POST)
     #     if form.is_valid():
@@ -56,9 +73,28 @@ def show_laboratory(request, laboratory_slug):
 
 
 def laboratory_result(request):
+    # laboratory = get_object_or_404(Lecture, slug=laboratory_slug)
     function = request.GET['function']
 
+    # context = {
+    #     'function_result': request.GET['function'],
+    #     'laboratory': laboratory,
+    # }
+
     return render(request, 'dip/laboratory_result.html', {'result_function': function})
+
+
+# def laboratory_result(request):
+#     posts = Lecture.objects.all()
+#
+#     context = {
+#         # 'posts': posts,
+#         'result_function': request.GET['function']
+#     }
+#
+#     return render(request, 'dip/laboratory_result.html', context=context)
+
+
 
 
 

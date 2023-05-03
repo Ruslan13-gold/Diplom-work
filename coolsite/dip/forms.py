@@ -1,7 +1,8 @@
 from django import forms
 from .models import *
 
-class PostFormAddFunctionAndSection(forms.Form):
+
+class PostFormLaboratory(forms.Form):
 
     # Функция
     function = forms.CharField(max_length=255, label="Введите уравнение: ", widget=forms.TextInput(
@@ -9,27 +10,25 @@ class PostFormAddFunctionAndSection(forms.Form):
                'class': 'custom_input',
                'placeholder': '2*x^n',
 
-                '''
+               '''
                 простейшая валидация на стороне клиента
                 '''
                'pattern': '[a-z0-9.*^()+-=/]{1,100}',
                'title': 'Ошибка ввода',
                }))
 
-
     # Отрезок
     section = forms.CharField(max_length=255, label="Введите отрезок: ", widget=forms.TextInput(
         attrs={'placeholder': '[-1.5;2]',
                'class': 'custom_input',
 
-                '''
+               '''
                 простейшая валидация на стороне клиента
                 '''
                'pattern': '[0-9.;-\\[\\]]{1,20}',
                'name': 'section',
                'title': 'Ошибка ввода',
                }))
-
 
     # Параметры метода
     par_small = forms.CharField(max_length=255, label=u"\u03bc: ", widget=forms.TextInput(
@@ -56,7 +55,6 @@ class PostFormAddFunctionAndSection(forms.Form):
                'title': 'Ошибка ввода',
                }))
 
-
     # Погрешности метода
     pogr_eps = forms.CharField(max_length=255, label=u"\u03b5: ", widget=forms.TextInput(
         attrs={'class': 'custom_input',
@@ -81,6 +79,14 @@ class PostFormAddFunctionAndSection(forms.Form):
                'name': 'pogr_delta',
                'title': 'Ошибка ввода',
                }))
+
+
+
+
+
+
+
+
 
 
 # class FormParametersAndInaccuracy(forms.Form):

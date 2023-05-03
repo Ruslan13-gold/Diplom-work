@@ -13,23 +13,23 @@
 <div class="right_post_lecture">
 
     <div class="group_lecture_button">
-
-        {% block post %}
-
-<!--        <div class="title_lecture">-->
-<!--            <h1>КУРС</h1>-->
-<!--        </div>-->
-        {% for p in posts %}
-        <button class="collapsible">{{p}}</button>
-
+        <div class="but_collapsible">
+            <button class="collapsible">fff</button>
+        </div>
         <div class="content">
+            {% for p in posts %}
             <p><a href="{{ p.get_absolute_url_lecture }}" class="a_in_content">{{p}}</a></p>
-            <hr>
-            <p><a href="{{ p.get_absolute_url_laboratory }}" class="a_in_content">Выполнить лабораторную работу</a></p>
+            {% endfor %}
         </div>
 
-        {% endfor %}
-        {% endblock %}
+        <div class="but_collapsible">
+            <button class="collapsible">Лабы</button>
+        </div>
+        <div class="content">
+            {% for p in posts %}
+            <p><a href="{{ p.get_absolute_url_lecture }}" class="a_in_content">{{p}}</a></p>
+            {% endfor %}
+        </div>
     </div>
 
 {% block content %}
